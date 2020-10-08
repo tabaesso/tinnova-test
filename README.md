@@ -16,7 +16,7 @@
   -  Digite `yarn typeorm migration:run` dentro da pasta `server` para criação das tabelas no banco.
   -  Digite `yarn start` para executar o projeto.
 
--[Veja as rotas da api aqui](routes.md)
+- [Veja as rotas da api aqui](routes.md)
 
 ## Autora:
 
