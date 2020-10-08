@@ -1,0 +1,34 @@
+version: '3.5'
+
+services:
+  tinnova_test_compose:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: docker
+      PGDATA: /data/tinnova_test
+    volumes:
+       - tinnova_test_compose:/data/tinnova_test
+    ports:
+      - "15432:5432"
+    networks:
+      - postgres-compose-network
+  
+  tinnova_test_db:
+    image: dpage/pgadmin4
+    environment: 
+      PGADMIN_DEFAULT_EMAIL: 'admin@admin.com'
+      PGADMIN_DEFAULT_PASSWORD: 'docker'
+    ports:
+      - "16543:80"
+    depends_on: 
+      - tinnova_test_compose
+    networks: 
+      - postgres-compose-network
+
+volumes: 
+  tinnova_test_compose:
+
+networks: 
+  postgres-compose-network:
+    driver: bridge
